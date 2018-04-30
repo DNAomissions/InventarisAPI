@@ -14,6 +14,10 @@ class ApiController extends Controller
         //
     }
 
+    public function showTables(){
+        return response()->json(app('db')->select("SHOW TABLES"));
+    }
+
     public function single($table){
         switch(strtolower($table)){
             case 'barang':
@@ -25,13 +29,13 @@ class ApiController extends Controller
             case 'barang_hilang':
                 $result = \App\BarangHilang::with('barang')->with('user')->get();
                 break;
-            case 'barang_keluar':
+            case 'keluar_barang':
                 $result = \App\BarangKeluar::with('barang')->with('user')->with('status')->get();
                 break;
-            case 'barang_masuk':
+            case 'masuk_barang':
                 $result = \App\BarangMasuk::with('barang')->with('supplier')->get();
                 break;
-            case 'barang_pinjam':
+            case 'pinjam_barang':
                 $result = \App\BarangPinjam::with('barang')->with('user')->with('status')->get();
                 break;
             case 'kategori':
@@ -83,13 +87,13 @@ class ApiController extends Controller
             case 'barang_hilang':
                 $result = \App\BarangHilang::with('barang')->with('user')->where('id_barang_hilang',$id)->get();
                 break;
-            case 'barang_keluar':
+            case 'keluar_barang':
                 $result = \App\BarangKeluar::with('barang')->with('user')->with('status')->where('id_brg_keluar',$id)->get();
                 break;
-            case 'barang_masuk':
+            case 'masuk_barang':
                 $result = \App\BarangMasuk::with('barang')->with('supplier')->where('id_msk_brg',$id)->get();
                 break;
-            case 'barang_pinjam':
+            case 'pinjam_barang':
                 $result = \App\BarangPinjam::with('barang')->with('user')->with('status')->where('no_pinjam',$id)->get();
                 break;
             case 'kategori':

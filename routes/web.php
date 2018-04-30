@@ -19,6 +19,12 @@ $router->get('/api',function() use ($router){
 	return view('api');
 });
 
+$router->get('/endpoint',function() use ($router){
+	return view('endpoint');
+});
+
+$router->get('/show_tables','ApiController@showTables');
+
 $router->group(['prefix' => 'api'],function () use ($router){
 	$router->get('/{table}','ApiController@single');
 	$router->get('/{table}/{id}','ApiController@show');
