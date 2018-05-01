@@ -97,19 +97,19 @@ class ApiController extends Controller
                 $result = \App\BarangPinjam::with('barang')->with('user')->with('status')->where('no_pinjam',$id)->get();
                 break;
             case 'kategori':
-                $result = \App\Kategori::find($id);
+                $result = \App\Kategori::where('id_kategori',$id)->get();
                 break;
             case 'kondisi':
-                $result = \App\Kondisi::find($id);
+                $result = \App\Kondisi::where('id_kondisi',$id)->get();
                 break;
             case 'level':
-                $result = \App\Level::find($id);
+                $result = \App\Level::where('id_level',$id)->get();
                 break;
             case 'lokasi':
-                $result = \App\Lokasi::find($id);
+                $result = \App\Lokasi::where('id_lokasi',$id)->get();
                 break;
             case 'status':
-                $result = \App\Status::find($id);
+                $result = \App\Status::where('id_status',$id)->get();
                 break;
             case 'stok':
                 $result = \App\Stok::with('barang')->where('kode_barang',$id)->get();
@@ -132,5 +132,9 @@ class ApiController extends Controller
             ];
         }
         return response()->json($result);
+    }
+
+    public function detail($table){
+        return view('detail',compact('table'));
     }
 }

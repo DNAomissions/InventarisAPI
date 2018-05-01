@@ -3,25 +3,27 @@
 @section('content')
 <br>
 	<div class="container" id="detail">
-		<div class="col-md-8 offset-md-2">
+		<div class="col-md-10 offset-md-1">
 			<div class="jumbotron bg-danger text-center">
-				<h2 style="color: white"></h2>
+				<h2 style="color: white">{{strtoupper($table)}}</h2>
 			</div>
-			<p>GET </p>
-			<div class="row">
-				<div class="col-md-6">
-					<div v-for="(table,index) in tables">
-						<div v-if="index < 7">
-							@{{index+1}}. <a v-bind:href="'/detail/'+table.Tables_in_db_inventaris">@{{table.Tables_in_db_inventaris}}</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div v-for="(table,index) in tables">
-						<div v-if="index >= 7">
-							@{{index+1}}. <a v-bind:href="'/detail/'+table.Tables_in_db_inventaris">@{{table.Tables_in_db_inventaris}}</a>
-						</div>
-					</div>
+			<div class="card">
+			  	<div class="card-header">
+			  		<div class="container-fluid">
+				  		<div class="row">
+				  			<input type="text" class="form-control col-md-9" v-bind:value="'GET {{url()}}/api/{{$table}}/'+id" readonly>
+				  			<a target="_blank" v-bind:href="'{{url()}}/api/{{$table}}/'+id" class="col-md-2 btn btn-success">Coba!</a>
+				  			<button v-clipboard:copy="copy" class="col-md-1 btn btn-primary" v-clipboard:success="onCopy" v-clipboard:error="onError" alt="Copy!"><span class="fas fa-fw fa-copy"></span></button>
+				  		</div>
+			  		</div>
+			  		<br>
+			    	<pre style="color:red;">$ curl -X GET "<span class="text-muted" style="background-color: rgba(0,0,0,0.1)">{{url()}}</span>/api/{{$table}}/@{{id}}"</pre>
+			    	<input type="text" v-model="id" placeholder="Search by ID" class="form-control" v-on:keyup="showJSON()">
+			  	</div>
+			  	<div class="card-block">
+			    	<blockquote class="card-blockquote">
+							<textarea readonly class="col-12" v-model="json" style="height:350px; padding: none;"></textarea>
+			    	</blockquote>
 				</div>
 			</div>
 		</div>

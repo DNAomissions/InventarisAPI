@@ -36,7 +36,8 @@
 		<script type="text/javascript" src="/assets/datatable/js/dataTables.bootstrap4.min.js"></script>
 		<!-- Vue 2 -->
 		<script type="text/javascript" src="/assets/vue/vue.min.js"></script>
-
+			<!-- Vue Clipboard -->
+			<script type="text/javascript" src="/assets/vue/vue-clipboard.min.js"></script>
 		<!-- MyApp -->
 		<script type="text/javascript" src="/js/app.js"></script>
 

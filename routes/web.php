@@ -23,7 +23,9 @@ $router->get('/endpoint',function() use ($router){
 	return view('endpoint');
 });
 
-$router->get('/show_tables','ApiController@showTables');
+$router->get('/detail/{table}','ApiController@detail');
+
+$router->get('/database/select/show_tables','ApiController@showTables');
 
 $router->group(['prefix' => 'api'],function () use ($router){
 	$router->get('/{table}','ApiController@single');
