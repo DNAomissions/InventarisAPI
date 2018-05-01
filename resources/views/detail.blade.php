@@ -4,16 +4,14 @@
 <br>
 	<div class="container" id="detail">
 		<div class="col-md-10 offset-md-1">
-			<div class="jumbotron bg-danger text-center">
-				<h2 style="color: white">{{strtoupper($table)}}</h2>
-			</div>
+			<h2 class="text-center">{{strtoupper($table)}}</h2>
 			<div class="card">
 			  	<div class="card-header">
 			  		<div class="container-fluid">
 				  		<div class="row">
 				  			<input type="text" class="form-control col-md-9" v-bind:value="'GET {{url()}}/api/{{$table}}/'+id" readonly>
-				  			<a target="_blank" v-bind:href="'{{url()}}/api/{{$table}}/'+id" class="col-md-2 btn btn-success">Coba!</a>
-				  			<button v-clipboard:copy="copy" class="col-md-1 btn btn-primary" v-clipboard:success="onCopy" v-clipboard:error="onError" alt="Copy!"><span class="fas fa-fw fa-copy"></span></button>
+				  			<a target="_blank" v-bind:href="'{{url()}}/api/{{$table}}/'+id" class="col-md-2 btn btn-success">Tab Baru</a>
+				  			<button v-clipboard:copy="copy" class="col-md-1 btn btn-primary" v-clipboard:success="onCopy" v-clipboard:error="onError" alt="Copy!">Copy&nbsp;<span class="fas fa-fw fa-xs fa-copy"></span></button>
 				  		</div>
 			  		</div>
 			  		<br>
@@ -21,9 +19,7 @@
 			    	<input type="text" v-model="id" placeholder="Search by ID" class="form-control" v-on:keyup="showJSON()">
 			  	</div>
 			  	<div class="card-block">
-			    	<blockquote class="card-blockquote">
-							<textarea readonly class="col-12" v-model="json" style="height:350px; padding: none;"></textarea>
-			    	</blockquote>
+					<textarea readonly class="col-12" v-model="json" style="font-family:Courier New;height:350px; padding: none;"></textarea>
 				</div>
 			</div>
 		</div>

@@ -55,7 +55,7 @@ new Vue({
 					if(this.url[2] == ""){
 						this.json = JSON.stringify([{"message":"Please insert URL!"}])
 					}else{
-						this.json = JSON.stringify(result,null,'	')
+						this.json = JSON.stringify(result,null,'    ')
 					}
 				} 
 			});
