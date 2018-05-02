@@ -23,11 +23,20 @@ $router->get('/endpoint',function() use ($router){
 	return view('endpoint');
 });
 
+//SHOW View Detail EndPoint
 $router->get('/detail/{table}','ApiController@detail');
 
-$router->get('/database/select/show_tables','ApiController@showTables');
 
+
+//Endpoint List
 $router->group(['prefix' => 'api'],function () use ($router){
+	//SHOW TABLES
+	$router->get('/database/show/tables','ApiController@showTables');
+	//SHOW COLUMN TABLE
+	$router->get('/database/show/{table}/column','ApiController@columnTable');
+	
+	//READ 
 	$router->get('/{table}','ApiController@single');
 	$router->get('/{table}/{id}','ApiController@show');
+
 });

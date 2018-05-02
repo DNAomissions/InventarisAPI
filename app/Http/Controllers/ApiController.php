@@ -137,4 +137,8 @@ class ApiController extends Controller
     public function detail($table){
         return view('detail',compact('table'));
     }
+
+    public function columnTable($table){
+        return response()->json(app('db')->select("SHOW COLUMNS FROM ".$table));
+    }
 }
